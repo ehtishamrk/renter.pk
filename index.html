@@ -346,7 +346,7 @@
             to { width: 100%; }
         }
 
-        .preloader-percent {
+        .preloader-counter {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 1.2rem;
             color: var(--text-light);
@@ -1023,7 +1023,112 @@
             background: rgba(255,255,255,0.3);
             transform: translateX(5px);
         }
+/* ================================================
+   BUTTON STYLES
+================================================ */
+.btn-primary {
+    padding: 18px 40px;
+    background: var(--gradient-wine);
+    border: none;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+}
 
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: var(--gradient-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s var(--ease-out-expo), height 0.6s var(--ease-out-expo);
+    z-index: 0;
+}
+
+.btn-primary:hover::before {
+    width: 400px;
+    height: 400px;
+}
+
+.btn-primary span,
+.btn-primary i {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-wine);
+}
+
+.btn-outline {
+    padding: 18px 40px;
+    background: transparent;
+    border: 2px solid var(--border-strong);
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.4s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--text-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s var(--ease-out-expo);
+    z-index: 0;
+}
+
+.btn-outline:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.btn-outline span,
+.btn-outline i {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease 0.1s;
+}
+
+.btn-outline:hover span,
+.btn-outline:hover i {
+    color: white;
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
+}
+
+.btn-icon {
+    margin-left: 8px;
+    font-size: 0.85rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover .btn-icon,
+.btn-outline:hover .btn-icon {
+    transform: translateX(5px);
+}
         .btn-hero-outline {
             background: transparent;
             color: var(--text-primary);
@@ -1144,7 +1249,30 @@
         .hero-stat {
             position: relative;
         }
+.hero-title-highlight {
+    color: var(--wine);
+    font-style: italic;
+    position: relative;
+}
 
+.hero-title-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: var(--gold);
+    opacity: 0.25;
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: accentReveal 1s var(--ease-out-expo) 1s forwards;
+}
+
+.hero-title-word {
+    display: inline-block;
+}
         .hero-stat-value {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3.5rem;
@@ -1924,6 +2052,7 @@
         .featured-container {
             max-width: var(--container-width);
             margin: 0 auto;
+            padding: 0 60px;
         }
 
         .featured-tabs {
@@ -4013,6 +4142,245 @@
         width: 100%;
     }
 }
+        /* ================================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+================================================ */
+@media (max-width: 1200px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding-top: 140px;
+    }
+    
+    .hero-visual {
+        height: 500px;
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    .categories-track {
+        padding: 20px 40px 60px;
+    }
+    
+    .listings-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .hiw-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 30px;
+    }
+    
+    .property-mgmt {
+        grid-template-columns: 1fr;
+    }
+    
+    .pm-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .pm-visual {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        top: 20px;
+        padding: 12px 30px;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-actions .btn-outline,
+    .nav-actions .btn-primary {
+        display: none;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+        padding: 0 30px;
+    }
+    
+    .section-nav {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .listings-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .category-card {
+        flex: 0 0 320px;
+        height: 480px;
+    }
+    
+    .hiw-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hiw-line {
+        display: none;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .contact-form {
+        padding: 35px;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pm-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+    }
+    
+    .hero-float-stat {
+        position: static;
+        margin-top: 30px;
+    }
+    
+    .hero-image-stack {
+        transform: scale(0.85);
+    }
+    
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .cookie-consent {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 25px;
+    }
+    
+    .cookie-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .cookie-actions button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --section-padding: clamp(50px, 10vw, 80px);
+    }
+    
+    .hero-container,
+    .section-header,
+    .featured-container,
+    .hiw-container,
+    .categories-track,
+    .page-content {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .navbar {
+        padding: 10px 20px;
+    }
+    
+    .nav-logo {
+        font-size: 1.3rem;
+    }
+    
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pm-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+    
+    .hero-cta button {
+        width: 100%;
+    }
+    
+    .btn-primary,
+    .btn-outline {
+        padding: 16px 35px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
+    .category-card {
+        flex: 0 0 280px;
+    }
+    
+    .modal {
+        width: 95%;
+        padding: 40px 25px;
+    }
+    
+    .contact-form {
+        padding: 25px;
+    }
+}
         </style>
 </head>
     <body>
@@ -4242,56 +4610,92 @@
 </a>
 
                 <a href="#" class="category-card" onclick="showPage('vehicles')">
-                    <div class="category-card-bg"></div>
-                    <div class="category-card-content">
-                        <div class="category-icon"><i class="fas fa-car"></i></div>
-                        <h3 class="category-title">Vehicles</h3>
-                        <p class="category-desc">Premium cars, bikes, and commercial vehicles for every occasion and budget.</p>
-                        <div class="category-count">
-                            <div><span>Available</span><br><strong>8,300+</strong></div>
-                            <div class="category-arrow"><i class="fas fa-arrow-right"></i></div>
-                        </div>
-                    </div>
-                </a>
+    <div class="category-card-bg"></div>
+    <div class="category-card-visual">
+        <div class="category-icon-wrapper">
+            <i class="fas fa-car"></i>
+        </div>
+    </div>
+    <div class="category-card-content">
+        <h3 class="category-card-title">Vehicles</h3>
+        <p class="category-card-desc">Premium cars, bikes, and commercial vehicles for every occasion and budget.</p>
+        <div class="category-card-footer">
+            <div class="category-card-count">
+                <strong>8,300+</strong>
+                <span>Available</span>
+            </div>
+            <div class="category-card-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</a>
 
-                <a href="#" class="category-card" onclick="showPage('tools')">
-                    <div class="category-card-bg"></div>
-                    <div class="category-card-content">
-                        <div class="category-icon"><i class="fas fa-tools"></i></div>
-                        <h3 class="category-title">Tools</h3>
-                        <p class="category-desc">Professional-grade equipment for construction, photography, events, and more.</p>
-                        <div class="category-count">
-                            <div><span>Available</span><br><strong>5,200+</strong></div>
-                            <div class="category-arrow"><i class="fas fa-arrow-right"></i></div>
-                        </div>
-                    </div>
-                </a>
+               <a href="#" class="category-card" onclick="showPage('tools')">
+    <div class="category-card-bg"></div>
+    <div class="category-card-visual">
+        <div class="category-icon-wrapper">
+            <i class="fas fa-tools"></i>
+        </div>
+    </div>
+    <div class="category-card-content">
+        <h3 class="category-card-title">Tools</h3>
+        <p class="category-card-desc">Professional-grade equipment for construction, photography, events, and more.</p>
+        <div class="category-card-footer">
+            <div class="category-card-count">
+                <strong>5,200+</strong>
+                <span>Available</span>
+            </div>
+            <div class="category-card-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</a>
 
                 <a href="#" class="category-card" onclick="showPage('clothes')">
-                    <div class="category-card-bg"></div>
-                    <div class="category-card-content">
-                        <div class="category-icon"><i class="fas fa-gem"></i></div>
-                        <h3 class="category-title">Fashion</h3>
-                        <p class="category-desc">Designer bridal wear, formal suits, and couture pieces for your special moments.</p>
-                        <div class="category-count">
-                            <div><span>Available</span><br><strong>15,800+</strong></div>
-                            <div class="category-arrow"><i class="fas fa-arrow-right"></i></div>
-                        </div>
-                    </div>
-                </a>
+    <div class="category-card-bg"></div>
+    <div class="category-card-visual">
+        <div class="category-icon-wrapper">
+            <i class="fas fa-gem"></i>
+        </div>
+    </div>
+    <div class="category-card-content">
+        <h3 class="category-card-title">Fashion</h3>
+        <p class="category-card-desc">Designer bridal wear, formal suits, and couture pieces for your special moments.</p>
+        <div class="category-card-footer">
+            <div class="category-card-count">
+                <strong>15,800+</strong>
+                <span>Available</span>
+            </div>
+            <div class="category-card-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</a>
 
                 <a href="#" class="category-card" onclick="showPage('property-management')">
-                    <div class="category-card-bg"></div>
-                    <div class="category-card-content">
-                        <div class="category-icon"><i class="fas fa-concierge-bell"></i></div>
-                        <h3 class="category-title">Services</h3>
-                        <p class="category-desc">Complete property management solutions for landlords and investors.</p>
-                        <div class="category-count">
-                            <div><span>Properties</span><br><strong>500+</strong></div>
-                            <div class="category-arrow"><i class="fas fa-arrow-right"></i></div>
-                        </div>
-                    </div>
-                </a>
+    <div class="category-card-bg"></div>
+    <div class="category-card-visual">
+        <div class="category-icon-wrapper">
+            <i class="fas fa-concierge-bell"></i>
+        </div>
+    </div>
+    <div class="category-card-content">
+        <h3 class="category-card-title">Services</h3>
+        <p class="category-card-desc">Complete property management solutions for landlords and investors.</p>
+        <div class="category-card-footer">
+            <div class="category-card-count">
+                <strong>500+</strong>
+                <span>Properties</span>
+            </div>
+            <div class="category-card-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</a>
             </div>
         </section>
 
@@ -5711,7 +6115,6 @@
 
         <div class="page-content">
             <div class="contact-grid">
-            <div class="contact-container">
                 <div class="contact-info">
                     <h2>Get in Touch</h2>
                     <p>Have a question, suggestion, or just want to say hello? We're here to help and would love to hear from you.</p>
