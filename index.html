@@ -103,10 +103,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        @media (min-width: 769px) {
-            body { cursor: none; }
-            a, button, input, textarea, select { cursor: none; }
-        }
 
         ::selection {
             background: var(--wine);
@@ -117,105 +113,7 @@
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; }
 
-        /* ================================================
-           CUSTOM CURSOR - MAGNETIC MORPH EFFECT
-        ================================================ */
-        .cursor-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 99999;
-            mix-blend-mode: difference;
-        }
-
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: var(--text-light);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s var(--ease-elastic),
-                        height 0.4s var(--ease-elastic),
-                        border-radius 0.4s var(--ease-elastic),
-                        background 0.3s ease;
-            z-index: 99999;
-        }
-
-        .cursor.hover {
-            width: 80px;
-            height: 80px;
-        }
-
-        .cursor.hover-text {
-            width: 120px;
-            height: 120px;
-            background: var(--wine);
-            mix-blend-mode: normal;
-        }
-
-        .cursor.hover-magnetic {
-            width: 100px;
-            height: 100px;
-            border-radius: 30%;
-        }
-
-        .cursor.clicking {
-            transform: translate(-50%, -50%) scale(0.8);
-        }
-
-        .cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s var(--ease-out-expo),
-                        height 0.3s var(--ease-out-expo),
-                        border-color 0.3s ease,
-                        opacity 0.3s ease;
-            z-index: 99998;
-            opacity: 0.5;
-        }
-.cursor-dot {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    background: var(--wine);
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 100001;
-    transition: opacity 0.3s ease;
-}
-        .cursor-follower.hover {
-            width: 100px;
-            height: 100px;
-            opacity: 0;
-        }
-
-        .cursor-text {
-            position: fixed;
-            pointer-events: none;
-            z-index: 100000;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-light);
-            opacity: 0;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .cursor.hover-text ~ .cursor-text { opacity: 1; }
+        
 
         /* ================================================
            SMOOTH SCROLL PROGRESS
@@ -796,9 +694,9 @@
         }
 
         @keyframes shapeFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(5deg); }
-        }
+    0%, 100% { transform: translateY(0) rotate(45deg); }
+    50% { transform: translateY(-30px) rotate(45deg); }
+}
 
         @keyframes shapeRotate {
             from { transform: rotate(0deg); }
@@ -1226,6 +1124,7 @@
     border-radius: 50%;
     top: 15%;
     right: 10%;
+    animation: shapeFloatCircle 15s ease-in-out infinite;  /* Use different animation */
 }
 
 .shape-square {
@@ -1361,7 +1260,10 @@
     background: linear-gradient(180deg, transparent 0%, var(--wine) 50%, transparent 100%);
     animation: scrollLineMove 2s ease-in-out infinite;
 }
-
+@keyframes shapeFloatCircle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
 @keyframes scrollLineMove {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 1; }
@@ -2391,7 +2293,7 @@
 
         .hiw-line {
             position: absolute;
-            top: 60px;
+            top: 40px;
             left: 12%;
             width: 76%;
             height: 2px;
@@ -4553,13 +4455,6 @@
         </style>
 </head>
     <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-container">
-        <div class="cursor"></div>
-        <div class="cursor-dot"></div>
-        <div class="cursor-follower"></div>
-        <div class="cursor-text"></div>
-    </div>
 
     <!-- Scroll Progress -->
     <div class="scroll-progress"></div>
@@ -4600,8 +4495,8 @@
             </div>
 
             <div class="nav-actions">
-                <button class="btn-outline btn-sm" onclick="openModal('login')">Login</button>
-                <button class="btn-primary btn-sm" onclick="openModal('signup')">Sign Up</button>
+                <button class="btn-outline btn-sm" onclick="openModal('login')"><span>Login</span></button>
+<button class="btn-primary btn-sm" onclick="openModal('signup')"><span>Sign Up</span></button>
                 <button class="nav-toggle" onclick="toggleMobileMenu()">
                     <span></span>
                     <span></span>
@@ -4630,8 +4525,8 @@
             <a href="#" onclick="showPage('contact')">Contact</a>
         </div>
         <div class="mobile-menu-btns">
-            <button class="btn-outline" onclick="openModal('login')">Login</button>
-            <button class="btn-primary" onclick="openModal('signup')">Sign Up</button>
+            <button class="btn-outline" onclick="openModal('login')"><span>Login</span></button>
+<button class="btn-primary" onclick="openModal('signup')"><span>Sign Up</span></button>
         </div>
     </div>
 
@@ -6251,12 +6146,12 @@
                 <div class="team-card">
                     <div class="team-avatar"><i class="fas fa-user"></i></div>
                     <h4>Ehtisham Rana Khan</h4>
-                    <p>Chief Executive Officer</p>
+                    <p>Founder & CEO</p>
                 </div>
                 <div class="team-card">
                     <div class="team-avatar"><i class="fas fa-user"></i></div>
                     <h4>Zaighum Rana Khan</h4>
-                    <p>Chief Operating Officer</p>
+                    <p>Co-CEO</p>
                 </div>
                 <div class="team-card">
                     <div class="team-avatar"><i class="fas fa-user"></i></div>
@@ -6266,7 +6161,7 @@
                 <div class="team-card">
                     <div class="team-avatar"><i class="fas fa-user"></i></div>
                     <h4>Rana Nouman Ahmad</h4>
-                    <p>Head of Operations</p>
+                    <p>Chief Operating Officer</p>
                 </div>
             </div>
         </div>
@@ -6939,44 +6834,7 @@
     </div>
     <!-- JAVASCRIPT -->
     <script>
-        // ============================================
-        // CUSTOM CURSOR
-        // ============================================
-        const cursor = document.querySelector('.cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-
-        if (window.innerWidth > 768) {
-            let mouseX = 0, mouseY = 0;
-            let cursorX = 0, cursorY = 0;
-            let dotX = 0, dotY = 0;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-
-            function animateCursor() {
-                cursorX += (mouseX - cursorX) * 0.15;
-                cursorY += (mouseY - cursorY) * 0.15;
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
-
-                dotX += (mouseX - dotX) * 0.3;
-                dotY += (mouseY - dotY) * 0.3;
-                cursorDot.style.left = dotX + 'px';
-                cursorDot.style.top = dotY + 'px';
-
-                requestAnimationFrame(animateCursor);
-            }
-            animateCursor();
-
-            // Hover effects
-            const hoverElements = document.querySelectorAll('a, button, .listing-card, .category-card, .blog-card, .career-card, .value-card, .team-card, .faq-item, input, textarea, select');
-            hoverElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        }
+        
 
         // ============================================
         // SCROLL PROGRESS BAR
