@@ -178,7 +178,17 @@
             z-index: 99998;
             opacity: 0.5;
         }
-
+.cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: var(--wine);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 100001;
+    transition: opacity 0.3s ease;
+}
         .cursor-follower.hover {
             width: 100px;
             height: 100px;
@@ -989,7 +999,15 @@
             transform: translateY(-3px);
             box-shadow: var(--shadow-wine);
         }
+.btn-sm {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+}
 
+.btn-lg {
+    padding: 22px 45px;
+    font-size: 1.1rem;
+}
         .btn-hero-icon {
             width: 32px;
             height: 32px;
@@ -2864,7 +2882,50 @@
             transform: translateY(-3px);
             box-shadow: var(--shadow-wine);
         }
+.modal-footer-text {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
 
+.modal-footer-text a {
+    color: var(--wine);
+    font-weight: 600;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.modal-footer-text a:hover {
+    color: var(--wine-dark);
+}
+
+.form-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--gradient-wine);
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.form-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-wine);
+}
+
+.form-btn i {
+    font-size: 0.9rem;
+}
         .form-divider {
             display: flex;
             align-items: center;
@@ -6026,6 +6087,91 @@
             </div>
         </div>
     </footer>
+        <!-- Login Modal -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('login')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Welcome Back</h2>
+            <p class="modal-subtitle">Login to access your account</p>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                
+                <button type="submit" class="form-btn">
+                    <span>Login</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                
+                <p class="modal-footer-text">
+                    Don't have an account? 
+                    <a href="#" onclick="switchModal('login', 'signup')">Sign up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal-overlay">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('signup')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Join Renter.pk</h2>
+            <p class="modal-subtitle">Create your free account today</p>
+            
+            <form onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="John Doe" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="you@example.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-input" placeholder="+92 300 1234567" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a strong password" required>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the Terms & Conditions</label>
+                </div>
+                
+                <button type="submit" class="form-btn">
+                    <span>Create Account</span>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+                
+                <p class="modal-footer-text">
+                    Already have an account? 
+                    <a href="#" onclick="switchModal('signup', 'login')">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
 <!-- Cookie Consent -->
     <div id="cookieConsent" class="cookie-consent">
         <div class="cookie-content">
