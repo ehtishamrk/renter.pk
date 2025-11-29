@@ -1048,7 +1048,75 @@
             transform: scaleX(1);
             transform-origin: left;
         }
+.hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+}
 
+.hero-blob-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(139, 41, 66, 0.15) 0%, transparent 70%);
+    top: 10%;
+    right: 5%;
+}
+
+.hero-blob-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(201, 167, 108, 0.2) 0%, transparent 70%);
+    bottom: 20%;
+    left: 10%;
+}
+
+.hero-blob-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(139, 41, 66, 0.1) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+      .hero-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.3;
+    animation: shapeFloat 15s ease-in-out infinite;
+}
+
+.shape-circle {
+    width: 300px;
+    height: 300px;
+    border: 1px solid var(--wine);
+    border-radius: 50%;
+    top: 15%;
+    right: 10%;
+}
+
+.shape-square {
+    width: 200px;
+    height: 200px;
+    border: 1px solid var(--gold);
+    bottom: 20%;
+    left: 15%;
+    transform: rotate(45deg);
+}
+
+@keyframes shapeFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}  
         .btn-hero-outline span {
             position: relative;
             z-index: 1;
@@ -1099,7 +1167,70 @@
             color: var(--text-tertiary);
             letter-spacing: 0.5px;
         }
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    background: white;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--wine);
+    margin-bottom: 35px;
+    box-shadow: var(--shadow-md);
+}
 
+.hero-tag-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+}
+        .hero-scroll {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.5s forwards;
+}
+
+.hero-scroll-line {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(180deg, transparent 0%, var(--wine) 50%, transparent 100%);
+    animation: scrollLineMove 2s ease-in-out infinite;
+}
+
+@keyframes scrollLineMove {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.hero-scroll-text {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    writing-mode: vertical-rl;
+}
+
+@media (max-width: 768px) {
+    .hero-scroll { display: none; }
+}
         /* Hero Visual */
         .hero-visual {
             position: relative;
@@ -1357,7 +1488,34 @@
             font-size: 0.8rem;
             color: var(--text-tertiary);
         }
+.section-header {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 70px;
+}
 
+.section-header-content {
+    flex: 1;
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--wine);
+    margin-bottom: 20px;
+}
+
+.section-title-highlight {
+    color: var(--wine);
+    font-style: italic;
+}
         /* Hero scroll indicator */
         .hero-scroll-indicator {
             position: absolute;
@@ -4018,51 +4176,70 @@
         </section>
 
         <!-- Marquee -->
-        <section class="marquee-section">
-            <div class="marquee-track">
-                <div class="marquee-content">
-                    <span class="marquee-item">Properties <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Vehicles <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Tools <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Designer Fashion <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Property Management <span class="marquee-dot"></span></span>
-                </div>
-                <div class="marquee-content">
-                    <span class="marquee-item">Properties <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Vehicles <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Tools <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Designer Fashion <span class="marquee-dot"></span></span>
-                    <span class="marquee-item">Property Management <span class="marquee-dot"></span></span>
-                </div>
-            </div>
-        </section>
+<section class="marquee">
+    <div class="marquee-track">
+        <div class="marquee-content">
+            <span class="marquee-item">Properties</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Vehicles</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Tools</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Designer Fashion</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Property Management</span>
+            <span class="marquee-divider"></span>
+        </div>
+        <div class="marquee-content">
+            <span class="marquee-item">Properties</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Vehicles</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Tools</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Designer Fashion</span>
+            <span class="marquee-divider"></span>
+            <span class="marquee-item">Property Management</span>
+            <span class="marquee-divider"></span>
+        </div>
+    </div>
+</section>
 
         <!-- Categories -->
-        <section class="categories reveal">
-            <div class="section-header">
-                <div class="section-header-content">
-                    <span class="section-tag">Categories</span>
-                    <h2 class="section-title">What Would You Like <br><span class="section-title-highlight">To Rent?</span></h2>
-                </div>
-                <div class="section-nav">
-                    <button class="section-nav-btn" onclick="scrollCategories(-1)"><i class="fas fa-arrow-left"></i></button>
-                    <button class="section-nav-btn" onclick="scrollCategories(1)"><i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
+<section class="categories reveal">
+    <div class="section-header">
+        <div class="section-header-content">
+            <span class="section-tag">Categories</span>
+            <h2 class="section-title">What Would You Like <br><span class="section-title-highlight">To Rent?</span></h2>
+        </div>
+        <div class="section-nav">
+            <button class="section-nav-btn" onclick="scrollCategories(-1)"><i class="fas fa-arrow-left"></i></button>
+            <button class="section-nav-btn" onclick="scrollCategories(1)"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </div>
 
             <div class="categories-track" id="categoriesTrack">
-                <a href="#" class="category-card" onclick="showPage('property-residential')">
-                    <div class="category-card-bg"></div>
-                    <div class="category-card-content">
-                        <div class="category-icon"><i class="fas fa-home"></i></div>
-                        <h3 class="category-title">Properties</h3>
-                        <p class="category-desc">From cozy apartments to luxury villas, find your perfect space in prime locations across Pakistan.</p>
-                        <div class="category-count">
-                            <div><span>Available</span><br><strong>12,500+</strong></div>
-                            <div class="category-arrow"><i class="fas fa-arrow-right"></i></div>
-                        </div>
-                    </div>
-                </a>
+               <a href="#" class="category-card" onclick="showPage('property-residential')">
+    <div class="category-card-bg"></div>
+    <div class="category-card-visual">
+        <div class="category-icon-wrapper">
+            <i class="fas fa-home"></i>
+        </div>
+    </div>
+    <div class="category-card-content">
+        <h3 class="category-card-title">Properties</h3>
+        <p class="category-card-desc">From cozy apartments to luxury villas, find your perfect space in prime locations across Pakistan.</p>
+        <div class="category-card-footer">
+            <div class="category-card-count">
+                <strong>12,500+</strong>
+                <span>Available</span>
+            </div>
+            <div class="category-card-arrow">
+                <i class="fas fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+</a>
 
                 <a href="#" class="category-card" onclick="showPage('vehicles')">
                     <div class="category-card-bg"></div>
@@ -4118,20 +4295,21 @@
             </div>
         </section>
 
-        <!-- Featured Listings -->
-        <section class="featured reveal">
-            <div class="featured-header">
-                <div class="section-header-content">
-                    <span class="section-tag">Featured</span>
-                    <h2 class="section-title">Premium <span class="section-title-highlight">Rentals</span></h2>
-                </div>
-                <div class="featured-tabs">
-                    <button class="featured-tab active" onclick="filterListings('all', this)">All</button>
-                    <button class="featured-tab" onclick="filterListings('property', this)">Property</button>
-                    <button class="featured-tab" onclick="filterListings('vehicle', this)">Vehicles</button>
-                    <button class="featured-tab" onclick="filterListings('tool', this)">Tools</button>
-                </div>
+       <!-- Featured Listings -->
+<section class="featured reveal">
+    <div class="featured-container">
+        <div class="section-header" style="margin-bottom: 50px;">
+            <div class="section-header-content">
+                <span class="section-tag">Featured</span>
+                <h2 class="section-title">Premium <span class="section-title-highlight">Rentals</span></h2>
             </div>
+        </div>
+        <div class="featured-tabs">
+            <button class="featured-tab active" onclick="filterListings('all', this)">All</button>
+            <button class="featured-tab" onclick="filterListings('property', this)">Property</button>
+            <button class="featured-tab" onclick="filterListings('vehicle', this)">Vehicles</button>
+            <button class="featured-tab" onclick="filterListings('tool', this)">Tools</button>
+        </div>
 
             <div class="listings-grid" id="featuredListings">
                 <div class="listing-card" data-category="property">
@@ -4264,138 +4442,136 @@
         </section>
 
         <!-- How It Works -->
-        <section class="how-it-works reveal">
-            <div class="how-it-works-bg"></div>
-            <div class="section-header" style="margin-bottom:80px;">
-                <div class="section-header-content">
-                    <span class="section-tag">Process</span>
-                    <h2 class="section-title">How It <span class="section-title-highlight">Works</span></h2>
-                </div>
+<section class="how-it-works reveal">
+    <div class="hiw-container">
+        <div class="section-header" style="margin-bottom: 80px;">
+            <div class="section-header-content">
+                <span class="section-tag">Process</span>
+                <h2 class="section-title">How It <span class="section-title-highlight">Works</span></h2>
+            </div>
+        </div>
+
+        <div class="hiw-grid">
+            <div class="hiw-line">
+                <div class="hiw-line-progress"></div>
             </div>
 
-            <div class="steps-container">
-                <div class="steps-line"></div>
+            <div class="hiw-step">
+                <div class="hiw-step-number"><span>01</span></div>
+                <div class="hiw-step-icon"><i class="fas fa-search"></i></div>
+                <h3 class="hiw-step-title">Discover</h3>
+                <p class="hiw-step-desc">Browse thousands of verified listings across properties, vehicles, and more.</p>
+            </div>
 
-                <div class="step-card reveal">
-                    <div class="step-number"><span>01</span></div>
-                    <div class="step-icon"><i class="fas fa-search"></i></div>
-                    <h3 class="step-title">Discover</h3>
-                    <p class="step-desc">Browse thousands of verified listings across properties, vehicles, and more.</p>
-                </div>
+            <div class="hiw-step">
+                <div class="hiw-step-number"><span>02</span></div>
+                <div class="hiw-step-icon"><i class="fas fa-hand-pointer"></i></div>
+                <h3 class="hiw-step-title">Select</h3>
+                <p class="hiw-step-desc">Choose your perfect rental and book instantly with secure payment.</p>
+            </div>
 
-                <div class="step-card reveal">
-                    <div class="step-number"><span>02</span></div>
-                    <div class="step-icon"><i class="fas fa-hand-pointer"></i></div>
-                    <h3 class="step-title">Select</h3>
-                    <p class="step-desc">Choose your perfect rental and book instantly with secure payment.</p>
-                </div>
+            <div class="hiw-step">
+                <div class="hiw-step-number"><span>03</span></div>
+                <div class="hiw-step-icon"><i class="fas fa-handshake"></i></div>
+                <h3 class="hiw-step-title">Connect</h3>
+                <p class="hiw-step-desc">Meet the owner, verify the item, and complete the handover.</p>
+            </div>
 
-                <div class="step-card reveal">
-                    <div class="step-number"><span>03</span></div>
-                    <div class="step-icon"><i class="fas fa-handshake"></i></div>
-                    <h3 class="step-title">Connect</h3>
-                    <p class="step-desc">Meet the owner, verify the item, and complete the handover.</p>
-                </div>
+            <div class="hiw-step">
+                <div class="hiw-step-number"><span>04</span></div>
+                <div class="hiw-step-icon"><i class="fas fa-smile"></i></div>
+                <h3 class="hiw-step-title">Enjoy</h3>
+                <p class="hiw-step-desc">Use your rental worry-free and return it when you're done.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <div class="step-card reveal">
-                    <div class="step-number"><span>04</span></div>
-                    <div class="step-icon"><i class="fas fa-smile"></i></div>
-                    <h3 class="step-title">Enjoy</h3>
-                    <p class="step-desc">Use your rental worry-free and return it when you're done.</p>
+       <!-- Property Management -->
+<section class="property-mgmt reveal">
+    <div class="pm-content">
+        <span class="section-label">For Property Owners</span>
+        <h2 class="pm-title">Professional Property <span>Management</span></h2>
+        <p class="pm-desc">Let us handle the complexities while you enjoy hassle-free rental income. Our expert team ensures your property is always in the best hands.</p>
+
+        <div class="pm-features">
+            <div class="pm-feature">
+                <div class="pm-feature-icon"><i class="fas fa-user-check"></i></div>
+                <div class="pm-feature-text">
+                    <h4>Tenant Screening</h4>
+                    <p>Comprehensive background checks</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Property Management -->
-        <section class="property-management reveal">
-            <div class="pm-bg-text">MANAGEMENT</div>
-            <div class="pm-container">
-                <div class="pm-content">
-                    <span class="section-tag">For Property Owners</span>
-                    <h2 class="pm-title">Professional Property <span>Management</span></h2>
-                    <p class="pm-desc">Let us handle the complexities while you enjoy hassle-free rental income. Our expert team ensures your property is always in the best hands.</p>
-
-                    <div class="pm-features">
-                        <div class="pm-feature">
-                            <div class="pm-feature-icon"><i class="fas fa-user-check"></i></div>
-                            <div class="pm-feature-text">
-                                <h4>Tenant Screening</h4>
-                                <p>Comprehensive background checks</p>
-                            </div>
-                        </div>
-                        <div class="pm-feature">
-                            <div class="pm-feature-icon"><i class="fas fa-money-bill-wave"></i></div>
-                            <div class="pm-feature-text">
-                                <h4>Rent Collection</h4>
-                                <p>Guaranteed on-time payments</p>
-                            </div>
-                        </div>
-                        <div class="pm-feature">
-                            <div class="pm-feature-icon"><i class="fas fa-wrench"></i></div>
-                            <div class="pm-feature-text">
-                                <h4>Maintenance</h4>
-                                <p>24/7 repair coordination</p>
-                            </div>
-                        </div>
-                        <div class="pm-feature">
-                            <div class="pm-feature-icon"><i class="fas fa-chart-line"></i></div>
-                            <div class="pm-feature-text">
-                                <h4>Reports</h4>
-                                <p>Detailed monthly statements</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pm-cta">
-                        <a href="#" class="pm-btn primary" onclick="showPage('property-management')">Learn More</a>
-                        <a href="#" class="pm-btn outline" onclick="showPage('contact')">Contact Us</a>
-                    </div>
-                </div>
-
-                <div class="pm-visual">
-                    <div class="pm-stats-grid">
-                        <div class="pm-stat-card">
-                            <div class="pm-stat-number">500+</div>
-                            <div class="pm-stat-label">Properties Managed</div>
-                        </div>
-                        <div class="pm-stat-card">
-                            <div class="pm-stat-number">98%</div>
-                            <div class="pm-stat-label">Occupancy Rate</div>
-                        </div>
-                        <div class="pm-stat-card">
-                            <div class="pm-stat-number">2B+</div>
-                            <div class="pm-stat-label">PKR Collected</div>
-                        </div>
-                        <div class="pm-stat-card">
-                            <div class="pm-stat-number">4.9</div>
-                            <div class="pm-stat-label">Owner Rating</div>
-                        </div>
-                    </div>
+            <div class="pm-feature">
+                <div class="pm-feature-icon"><i class="fas fa-money-bill-wave"></i></div>
+                <div class="pm-feature-text">
+                    <h4>Rent Collection</h4>
+                    <p>Guaranteed on-time payments</p>
                 </div>
             </div>
-        </section>
+            <div class="pm-feature">
+                <div class="pm-feature-icon"><i class="fas fa-wrench"></i></div>
+                <div class="pm-feature-text">
+                    <h4>Maintenance</h4>
+                    <p>24/7 repair coordination</p>
+                </div>
+            </div>
+            <div class="pm-feature">
+                <div class="pm-feature-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="pm-feature-text">
+                    <h4>Reports</h4>
+                    <p>Detailed monthly statements</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pm-cta">
+            <button class="pm-btn pm-btn-primary" onclick="showPage('property-management')">Learn More</button>
+            <button class="pm-btn pm-btn-outline" onclick="showPage('contact')">Contact Us</button>
+        </div>
+    </div>
+
+    <div class="pm-visual">
+        <div class="pm-stats-grid">
+            <div class="pm-stat">
+                <div class="pm-stat-value">500+</div>
+                <div class="pm-stat-label">Properties Managed</div>
+            </div>
+            <div class="pm-stat">
+                <div class="pm-stat-value">98%</div>
+                <div class="pm-stat-label">Occupancy Rate</div>
+            </div>
+            <div class="pm-stat">
+                <div class="pm-stat-value">2B+</div>
+                <div class="pm-stat-label">PKR Collected</div>
+            </div>
+            <div class="pm-stat">
+                <div class="pm-stat-value">4.9</div>
+                <div class="pm-stat-label">Owner Rating</div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Testimonials -->
-        <section class="testimonials reveal">
-            <div class="section-header" style="margin-bottom:60px;">
-                <div class="section-header-content">
-                    <span class="section-tag">Testimonials</span>
-                    <h2 class="section-title">What Our <span class="section-title-highlight">Users Say</span></h2>
-                </div>
-            </div>
+<section class="testimonials reveal">
+    <div class="section-header" style="margin-bottom: 60px; text-align: center; display: block;">
+        <span class="section-tag" style="margin: 0 auto;">Testimonials</span>
+        <h2 class="section-title">What Our <span class="section-title-highlight">Users Say</span></h2>
+    </div>
 
-            <div class="testimonials-container">
-                <div class="testimonial-quote-mark">"</div>
-                <p class="testimonial-text">Renter has completely transformed how I find rental properties. The platform is incredibly intuitive, and I found my dream apartment within days. The verification process gave me complete peace of mind.</p>
-                <div class="testimonial-author">
-                    <div class="testimonial-avatar">AK</div>
-                    <div class="testimonial-info">
-                        <h4 class="testimonial-name">Ahmed Khan</h4>
-                        <p class="testimonial-role">Property Renter, Lahore</p>
-                    </div>
-                </div>
+    <div class="testimonials-container">
+        <div class="testimonial-quote-icon">"</div>
+        <p class="testimonial-text">Renter has completely transformed how I find rental properties. The platform is incredibly intuitive, and I found my dream apartment within days. The verification process gave me complete peace of mind.</p>
+        <div class="testimonial-author">
+            <div class="testimonial-avatar">AK</div>
+            <div class="testimonial-info">
+                <h4 class="testimonial-name">Ahmed Khan</h4>
+                <p class="testimonial-role">Property Renter, Lahore</p>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <!-- CTA -->
         <section class="cta-section reveal">
@@ -5534,6 +5710,7 @@
         </div>
 
         <div class="page-content">
+            <div class="contact-grid">
             <div class="contact-container">
                 <div class="contact-info">
                     <h2>Get in Touch</h2>
@@ -5574,7 +5751,7 @@
                     </div>
                 </div>
 
-                <div class="contact-form-container">
+                <div class="contact-form">
                     <h3>Send a Message</h3>
                     <form onsubmit="handleContact(event)">
                         <div class="form-row">
