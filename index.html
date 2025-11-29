@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renter.pk - Pakistan's Premier Rental Marketplace</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -3727,7 +3731,62 @@
             border-color: var(--wine);
             background: white;
         }
+.about-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+}
 
+.about-hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 30px;
+}
+
+.about-hero-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.about-hero-content p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 2;
+    margin-bottom: 20px;
+}
+
+.about-hero-image {
+    height: 500px;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, white 100%);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-hero-image i {
+    font-size: 8rem;
+    color: var(--wine);
+    opacity: 0.08;
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .about-hero-image {
+        height: 350px;
+    }
+}
         /* About/Legal styles */
         .about-hero-grid {
             display: grid;
@@ -4543,7 +4602,7 @@
                         <span class="hero-title-line"><span class="hero-title-word">Anywhere</span></span>
                     </h1>
 
-                    <p class="hero-desc">
+                    <p class="hero-description">
                         From luxury apartments to designer couture, premium vehicles to professional equipment. Experience the future of renting with Pakistan's most trusted platform.
                     </p>
 
@@ -5851,7 +5910,7 @@
 
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:400;text-align:center;margin-bottom:60px;">Our Pricing Plans</h2>
 
-            <div class="about-values">
+            <div class="values-grid">
                 <div class="value-card" style="border:2px solid var(--border);">
                     <h3 style="color:var(--wine);margin-bottom:10px;">Basic</h3>
                     <p style="font-size:3rem;font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--text-dark);margin-bottom:20px;">8%<span style="font-size:1rem;color:var(--text-light);"> /month</span></p>
@@ -6109,7 +6168,7 @@
 
             <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:400;text-align:center;margin-bottom:60px;">Our Values</h2>
 
-            <div class="about-values">
+            <div class="values-grid">
                 <div class="value-card">
                     <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Trust & Security</h3>
