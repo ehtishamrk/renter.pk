@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renter.pk - Pakistan's Premier Rental Marketplace</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%238B2942'/><text x='50' y='70' font-size='70' text-anchor='middle' fill='%23C9A76C' font-family='serif'>R</text></svg>">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -602,6 +603,7 @@
             background: var(--gradient-wine);
             color: white;
             border: 2px solid transparent;
+            position: relative;
         }
 
         .nav-btn-primary::before {
@@ -3377,17 +3379,19 @@
             font-size: 1.5rem;
         }
 
-        .cookie-content h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
-            margin-bottom: 6px;
-        }
+        .cookie-text h4,
+.cookie-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
 
-        .cookie-content p {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            line-height: 1.6;
-        }
+.cookie-text p,
+.cookie-content p {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+}
 
         .cookie-buttons {
             display: flex;
@@ -3439,6 +3443,21 @@
 
 .mobile-menu.open {
     right: 0;
+}
+        .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.mobile-menu-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--wine);
 }
 
         .mobile-menu-close {
@@ -3809,6 +3828,7 @@
 }
 
 @media (max-width: 768px) {
+    
     .about-hero {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -4255,6 +4275,14 @@
 }
 
 @media (max-width: 768px) {
+    .about-hero {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .about-hero-image {
+        height: 350px;
+    }
     .nav-links {
         display: none;
     }
@@ -4601,7 +4629,7 @@
             <a href="#" onclick="showPage('about')">About</a>
             <a href="#" onclick="showPage('contact')">Contact</a>
         </div>
-        <div class="mobile-menu-actions">
+        <div class="mobile-menu-btns">
             <button class="btn-outline" onclick="openModal('login')">Login</button>
             <button class="btn-primary" onclick="openModal('signup')">Sign Up</button>
         </div>
@@ -6974,7 +7002,7 @@
             if (count >= 100) {
                 clearInterval(counterInterval);
                 setTimeout(() => {
-                    preloader.classList.add('hide');
+                    preloader.classList.add('complete');
                     setTimeout(() => {
                         preloader.style.display = 'none';
                     }, 1200);
@@ -7240,7 +7268,7 @@
         // ============================================
         // STEPS LINE ANIMATION
         // ============================================
-        const stepsLine = document.querySelector('.steps-line');
+        const stepsLine = document.querySelector('.hiw-line');
         if (stepsLine) {
             const stepsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
