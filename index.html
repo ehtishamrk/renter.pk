@@ -6969,11 +6969,33 @@
         // ============================================
         // FORM HANDLERS
         // ============================================
-        function handleLogin(e) {
-            e.preventDefault();
-            alert('Login successful! (Demo)');
+      function handleLogin(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-btn');
+    const btnText = btn.querySelector('span');
+    const originalText = btnText.textContent;
+    
+    // Show loading state
+    btn.disabled = true;
+    btnText.textContent = 'Logging in...';
+    btn.style.opacity = '0.7';
+    
+    // Simulate API call (replace with real API later)
+    setTimeout(() => {
+        // Success
+        btnText.textContent = 'Success!';
+        btn.style.background = '#22c55e';
+        
+        setTimeout(() => {
             closeModal('login');
-        }
+            // Reset button
+            btn.disabled = false;
+            btnText.textContent = originalText;
+            btn.style.opacity = '1';
+            btn.style.background = '';
+        }, 1000);
+    }, 1500);
+}
 
         function handleSignup(e) {
             e.preventDefault();
