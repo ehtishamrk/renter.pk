@@ -6980,7 +6980,7 @@
     btnText.textContent = 'Logging in...';
     btn.style.opacity = '0.7';
     
-    // Simulate API call (replace with real API later)
+    // Simulate API call (replace with real API)
     setTimeout(() => {
         // Success
         btnText.textContent = 'Success!';
@@ -6999,9 +6999,31 @@
 
         function handleSignup(e) {
             e.preventDefault();
-            alert('Account created successfully! (Demo)');
-            closeModal('signup');
-        }
+    const btn = e.target.querySelector('.form-btn');
+    const btnText = btn.querySelector('span');
+    const originalText = btnText.textContent;
+    
+    // Show loading state
+    btn.disabled = true;
+    btnText.textContent = 'Signing Up...';
+    btn.style.opacity = '0.7';
+    
+    // Simulate API call (replace with real API)
+    setTimeout(() => {
+        // Success
+        btnText.textContent = 'Success!';
+        btn.style.background = '#22c55e';
+        
+        setTimeout(() => {
+            closeModal('Signup');
+            // Reset button
+            btn.disabled = false;
+            btnText.textContent = originalText;
+            btn.style.opacity = '1';
+            btn.style.background = '';
+        }, 1000);
+    }, 1500);
+}
 
         function handleContact(e) {
             e.preventDefault();
