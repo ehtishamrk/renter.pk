@@ -4452,6 +4452,48 @@
         padding: 25px;
     }
 }
+        /* Loading Spinner */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(253, 252, 250, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.loading-spinner.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.spinner-circle {
+    width: 60px;
+    height: 60px;
+    border: 4px solid var(--border);
+    border-top-color: var(--wine);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner-text {
+    margin-top: 20px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
         </style>
 </head>
     <body>
@@ -4474,7 +4516,12 @@
             <div class="preloader-counter">0</div>
         </div>
     </div>
-
+        
+<!-- Loading Spinner -->
+<div id="loadingSpinner" class="loading-spinner">
+    <div class="spinner-circle"></div>
+    <div class="spinner-text">Loading...</div>
+</div>
     <!-- Navigation -->
     <nav id="navbar" class="navbar">
         <div class="nav-container">
@@ -6732,12 +6779,12 @@
         </div>
     </footer>
         <!-- Login Modal -->
-    <div id="loginModal" class="modal-overlay">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal('login')">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="modal-title">Welcome Back</h2>
+    <div id="loginModal" class="modal-overlay" role="dialog" aria-labelledby="loginTitle" aria-modal="true">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('login')" aria-label="Close login modal">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 class="modal-title" id="loginTitle">Welcome Back</h2>
             <p class="modal-subtitle">Login to access your account</p>
             
             <form onsubmit="handleLogin(event)">
@@ -7317,6 +7364,17 @@
         // Console welcome message
         console.log('%c Welcome to Renter.pk ', 'background: #722F37; color: white; font-size: 20px; padding: 10px; border-radius: 5px;');
         console.log('%c Pakistan\'s Premier Rental Marketplace ', 'color: #722F37; font-size: 14px;');
+   // Loading Spinner Functions
+function showLoading(text = 'Loading...') {
+    const spinner = document.getElementById('loadingSpinner');
+    spinner.querySelector('.spinner-text').textContent = text;
+    spinner.classList.add('show');
+}
+
+function hideLoading() {
+    const spinner = document.getElementById('loadingSpinner');
+    spinner.classList.remove('show');
+}
     </script>
 </body>
 </html>
