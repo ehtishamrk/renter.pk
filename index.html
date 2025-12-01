@@ -6817,12 +6817,12 @@
     </div>
 
     <!-- Signup Modal -->
-    <div id="signupModal" class="modal-overlay">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal('signup')">
-                <i class="fas fa-times"></i>
-            </button>
-            <h2 class="modal-title">Join Renter.pk</h2>
+    <div id="signupModal" class="modal-overlay" role="dialog" aria-labelledby="signupTitle" aria-modal="true">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('signup')" aria-label="Close signup modal">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2 class="modal-title" id="signupTitle">Join Renter.pk</h2>
             <p class="modal-subtitle">Create your free account today</p>
             
             <form onsubmit="handleSignup(event)">
