@@ -272,7 +272,7 @@
 
         @keyframes preloaderExit {
             0% { clip-path: inset(0 0 0 0); }
-            100% { opacity: 0; clip-path: inset(0 0 100% 0); }
+            100% { clip-path: inset(0 0 100% 0); }
         }
 .preloader.hide {
     animation: preloaderExit 1.2s var(--ease-in-out-circ) forwards;
@@ -4523,7 +4523,7 @@
     <div class="spinner-text">Loading...</div>
 </div>
     <!-- Navigation -->
-    <nav id="navbar" class="nav">
+    <nav id="navbar" class="navbar">
         <div class="nav-container">
             <a href="#" onclick="showPage('home')" class="nav-logo">
                 <span class="nav-logo-text">RENTER</span>
@@ -7062,7 +7062,7 @@
         btn.style.background = '#22c55e';
         
         setTimeout(() => {
-            closeModal('signup');
+            closeModal('Signup');
             // Reset button
             btn.disabled = false;
             btnText.textContent = originalText;
@@ -7331,7 +7331,9 @@
                     card.style.transform = `translate(-50%, -50%) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
                 });
 
-                card.addEventListener('mouseleave', () => { card.style.transform = 'translate(-50%, -50%) perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)'; });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translate(-50%, -50%)';
+                });
             });
         }
 
