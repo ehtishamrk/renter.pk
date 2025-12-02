@@ -113,19 +113,7 @@
         a { text-decoration: none; color: inherit; }
         button { font-family: inherit; }
 
-        /* ------------------------------------------------ */
-        /* AWESOME LEVEL ANIMATION STYLES FOR HIW SECTION   */
-        /* ------------------------------------------------ */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-        }
-
-        .fade-up.gsap-reveal-active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        
 
         /* ================================================
            SMOOTH SCROLL PROGRESS
@@ -359,16 +347,12 @@
             position: relative;
         }
 
-     .nav-logo::after {
+        .nav-logo::after {
             content: '.pk';
-            font-size: 0.5em; /* Adjusted size */
-            font-weight: 700; /* Added weight */
+            font-size: 0.9rem;
             color: var(--gold);
             position: absolute;
-            left: 100%; /* Positions after "Renter" */
-            top: 50%; /* Centers vertically */
-            transform: translateY(-50%) translateX(2px); /* Vertical offset and spacing */
-            letter-spacing: normal; /* Overrides parent letter-spacing */
+            bottom: 2px;
         }
 
         .nav-menu {
@@ -698,15 +682,7 @@
             left: 50%;
             transform: translateX(-50%);
         }
-.hero-shape-square {
-    width: 100px;
-    height: 100px;
-    border: 1px solid var(--gold);
-    top: 60%;
-    left: 40%;
-    transform: rotate(45deg); /* Diamond shape */
-    animation-delay: -8s;
-}
+
         .hero-shape-dot {
             width: 8px;
             height: 8px;
@@ -1316,21 +1292,7 @@
             width: 100%;
             height: 100%;
         }
-.hero-card-featured {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 10;
-    padding: 6px 14px;
-    background: var(--wine);
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    border-radius: 6px;
-    box-shadow: var(--shadow-sm);
-}
+
         .hero-card {
             position: absolute;
             background: white;
@@ -4626,7 +4588,6 @@
             <div class="hero-shapes">
                 <div class="shape shape-circle"></div>
                 <div class="shape shape-square"></div>
-                <div class="hero-shape hero-shape-square"></div>
             </div>
 
             <div class="hero-container">
@@ -5006,16 +4967,9 @@
         </div>
 
         <div class="hiw-grid">
-            <div class="hiw-steps-grid">
-    <div class="hiw-step gsap-reveal fade-up" data-delay="0">
-        </div>
-
-    <div class="hiw-step gsap-reveal fade-up" data-delay="0.15">
-        </div>
-
-    <div class="hiw-step gsap-reveal fade-up" data-delay="0.3">
-        </div>
-    </div>
+            <div class="hiw-line">
+                <div class="hiw-line-progress"></div>
+            </div>
 
             <div class="hiw-step">
                 <div class="hiw-step-number"><span>01</span></div>
@@ -7108,7 +7062,7 @@
         btn.style.background = '#22c55e';
         
         setTimeout(() => {
-            closeModal('signup');
+            closeModal('Signup');
             // Reset button
             btn.disabled = false;
             btnText.textContent = originalText;
@@ -7260,6 +7214,20 @@
             });
         });
 
+        // ============================================
+        // STEPS LINE ANIMATION
+        // ============================================
+        const stepsLine = document.querySelector('.hiw-line');
+        if (stepsLine) {
+            const stepsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stepsLine.classList.add('animated');
+                    }
+                });
+            }, { threshold: 0.5 });
+            stepsObserver.observe(stepsLine);
+        }
 
         // ============================================
         // COUNTER ANIMATION
