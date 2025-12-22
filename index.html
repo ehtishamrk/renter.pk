@@ -304,262 +304,6 @@
         }
 
         /* ================================================
-           NAVIGATION - FLOATING PILL
-        ================================================ */
-        .nav {
-            position: fixed;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 18px 50px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 100px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: var(--shadow-lg);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            transition: all 0.5s var(--ease-out-expo);
-        }
-
-        .nav.scrolled {
-            top: 20px;
-            padding: 14px 40px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: var(--shadow-xl);
-        }
-
-        .nav.hidden {
-            transform: translateX(-50%) translateY(-150%);
-        }
-
-        .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: var(--wine);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-logo::after {
-            content: '.pk';
-            font-size: 0.9rem;
-            color: var(--gold);
-            position: absolute;
-            bottom: 2px;
-        }
-
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 45px;
-            list-style: none;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            letter-spacing: 0.5px;
-            padding: 8px 0;
-            position: relative;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .nav-link i { font-size: 0.65rem; transition: transform 0.3s ease; }
-        .nav-item:hover .nav-link i { transform: rotate(180deg); }
-        .nav-link:hover { color: var(--wine); }
-
-        .nav-link-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-wine);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s var(--ease-out-expo);
-        }
-
-        .nav-link:hover .nav-link-line {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .nav-dropdown {
-            position: absolute;
-            top: calc(100% + 25px);
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-            background: white;
-            border-radius: 24px;
-            padding: 12px;
-            min-width: 240px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s var(--ease-out-expo);
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--border);
-        }
-
-        .nav-item:hover .nav-dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .nav-dropdown::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: 0;
-            width: 100%;
-            height: 20px;
-        }
-
-        .nav-dropdown a {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 16px 20px;
-            border-radius: 16px;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .nav-dropdown a:hover {
-            background: var(--bg-secondary);
-            color: var(--wine);
-            transform: translateX(5px);
-        }
-
-        .nav-dropdown-icon {
-            width: 45px;
-            height: 45px;
-            background: var(--bg-secondary);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .nav-dropdown a:hover .nav-dropdown-icon {
-            background: var(--wine);
-            color: white;
-        }
-
-        .nav-dropdown-icon i { font-size: 1.1rem; color: var(--wine); transition: color 0.3s ease; }
-        .nav-dropdown a:hover .nav-dropdown-icon i { color: white; }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-btn {
-            padding: 14px 32px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.4s var(--ease-out-expo);
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-
-        .nav-btn-outline {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--border-strong);
-        }
-
-        .nav-btn-outline:hover {
-            border-color: var(--wine);
-            color: var(--wine);
-        }
-
-        .nav-btn-primary {
-            background: var(--gradient-wine);
-            color: white;
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .nav-btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-gold);
-            transition: left 0.5s var(--ease-out-expo);
-            z-index: 0;
-        }
-
-        .nav-btn-primary:hover::before { left: 0; }
-
-        .nav-btn-primary span {
-            position: relative;
-            z-index: 1;
-            transition: color 0.3s ease 0.1s;
-        }
-
-        .nav-btn-primary:hover span { color: var(--text-primary); }
-
-        .mobile-toggle {
-            display: none;
-            width: 50px;
-            height: 50px;
-            background: var(--bg-secondary);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-toggle:hover { background: var(--wine); }
-        .mobile-toggle:hover span { background: white; }
-
-        .mobile-toggle span {
-            position: absolute;
-            left: 50%;
-            width: 20px;
-            height: 2px;
-            background: var(--text-primary);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-toggle span:nth-child(1) { top: 18px; transform: translateX(-50%); }
-        .mobile-toggle span:nth-child(2) { top: 24px; transform: translateX(-50%); }
-        .mobile-toggle span:nth-child(3) { top: 30px; transform: translateX(-50%); }
-
-        .mobile-toggle.active span:nth-child(1) { top: 24px; transform: translateX(-50%) rotate(45deg); }
-        .mobile-toggle.active span:nth-child(2) { opacity: 0; }
-        .mobile-toggle.active span:nth-child(3) { top: 24px; transform: translateX(-50%) rotate(-45deg); }
-
-        /* ================================================
            HERO - SPLIT SCREEN PARALLAX
         ================================================ */
         .hero {
@@ -4494,6 +4238,12 @@
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
+.nav-links a.active {
+    color: var(--wine);
+}
+.nav-links a.active::after {
+    width: 100%;
+}
         </style>
 </head>
     <body>
@@ -6895,25 +6645,38 @@
         });
 
         // ============================================
-        // PRELOADER
+        // REAL PRELOADER LOGIC
         // ============================================
         const preloader = document.querySelector('.preloader');
         const preloaderCounter = document.querySelector('.preloader-counter');
         let count = 0;
+        let isLoaded = false;
 
+        // 1. Mark as loaded when the window is actually ready
+        window.addEventListener('load', () => {
+            isLoaded = true;
+        });
+
+        // 2. Run the counter, but pause at 99% until isLoaded is true
         const counterInterval = setInterval(() => {
-            count++;
-            preloaderCounter.textContent = count;
-            if (count >= 100) {
+            if (count < 99) {
+                count++;
+                preloaderCounter.textContent = count;
+            } else if (count === 99 && isLoaded) {
+                // Only finish if window is loaded
+                count++;
+                preloaderCounter.textContent = count;
                 clearInterval(counterInterval);
+                
+                // Trigger exit animation
                 setTimeout(() => {
                     preloader.classList.add('complete');
                     setTimeout(() => {
                         preloader.style.display = 'none';
                     }, 1200);
-                }, 500);
+                }, 200);
             }
-        }, 20);
+        }, 30); // Speed of counter
 
         // ============================================
         // COOKIE CONSENT
@@ -6959,22 +6722,41 @@
         // ============================================
         // PAGE NAVIGATION
         // ============================================
-        function showPage(pageId) {
+       function showPage(pageId) {
+            // 1. Hide all pages
             document.querySelectorAll('.page').forEach(page => {
                 page.classList.remove('active');
             });
+            
+            // 2. Show target page
             const targetPage = document.getElementById('page-' + pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
+
+            // 3. Close mobile menu if open
             if (mobileMenu.classList.contains('open')) {
                 toggleMobileMenu();
             }
-            // Re-trigger reveal animations
+
+            // --- NEW LOGIC: Update Navigation Active State ---
+            // Remove active class from all links
+            document.querySelectorAll('.nav-links a, .mobile-menu-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Find links that point to this page and add active class
+            // We look for onclick="showPage('pageId')"
+            const activeLinks = document.querySelectorAll(`[onclick="showPage('${pageId}')"]`);
+            activeLinks.forEach(link => {
+                if(link.tagName === 'A') link.classList.add('active');
+            });
+            // ------------------------------------------------
+
+            // 4. Re-trigger animations
             initRevealAnimations();
         }
-
         // ============================================
         // MODALS
         // ============================================
@@ -7078,72 +6860,130 @@
             e.target.reset();
         }
 
-        // ============================================
-        // FILTERING
-        // ============================================
+        // Improved Filter Logic with Timer Clearing
         function filterListings(category, btn) {
+            // Update active button state
             document.querySelectorAll('.featured-tab').forEach(tab => tab.classList.remove('active'));
             btn.classList.add('active');
 
             const cards = document.querySelectorAll('#featuredListings .listing-card');
             cards.forEach(card => {
+                // Clear any pending timeout attached to this card
+                if (card.dataset.timeoutId) {
+                    clearTimeout(Number(card.dataset.timeoutId));
+                }
+
                 if (category === 'all' || card.dataset.category === category) {
                     card.style.display = 'block';
-                    setTimeout(() => card.style.opacity = '1', 10);
+                    // Small delay to allow display:block to apply before opacity transition
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    });
                 } else {
                     card.style.opacity = '0';
-                    setTimeout(() => card.style.display = 'none', 300);
+                    card.style.transform = 'translateY(20px) scale(0.95)';
+                    
+                    // Store the timeout ID so we can cancel it if clicked again
+                    const timeoutId = setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300); // Match CSS transition time
+                    card.dataset.timeoutId = timeoutId;
                 }
             });
         }
 
-        function filterVehicles(type, btn) {
+       function filterVehicles(type, btn) {
+            // Update active state
             document.querySelectorAll('#page-vehicles .toggle-tab').forEach(tab => tab.classList.remove('active'));
             btn.classList.add('active');
 
             const cards = document.querySelectorAll('#vehiclesGrid .listing-card');
             cards.forEach(card => {
+                // Clear any pending hide timer
+                if (card.dataset.timeoutId) {
+                    clearTimeout(Number(card.dataset.timeoutId));
+                }
+
                 if (type === 'all' || card.dataset.type === type) {
                     card.style.display = 'block';
-                    setTimeout(() => card.style.opacity = '1', 10);
+                    // Use requestAnimationFrame for smooth display -> opacity transition
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    });
                 } else {
                     card.style.opacity = '0';
-                    setTimeout(() => card.style.display = 'none', 300);
+                    card.style.transform = 'translateY(20px) scale(0.95)';
+                    
+                    // Set new timer and save ID
+                    const timeoutId = setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                    card.dataset.timeoutId = timeoutId;
                 }
             });
         }
 
-        function filterTools(type, btn) {
+       function filterTools(type, btn) {
+            // Update active state
             document.querySelectorAll('#page-tools .toggle-tab').forEach(tab => tab.classList.remove('active'));
             btn.classList.add('active');
 
             const cards = document.querySelectorAll('#toolsGrid .listing-card');
             cards.forEach(card => {
+                // Clear any pending hide timer
+                if (card.dataset.timeoutId) {
+                    clearTimeout(Number(card.dataset.timeoutId));
+                }
+
                 if (type === 'all' || card.dataset.type === type) {
                     card.style.display = 'block';
-                    setTimeout(() => card.style.opacity = '1', 10);
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    });
                 } else {
                     card.style.opacity = '0';
-                    setTimeout(() => card.style.display = 'none', 300);
+                    card.style.transform = 'translateY(20px) scale(0.95)';
+                    
+                    const timeoutId = setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                    card.dataset.timeoutId = timeoutId;
                 }
             });
         }
 
         function filterClothes(type, btn) {
+            // Update active state
             document.querySelectorAll('#page-clothes .toggle-tab').forEach(tab => tab.classList.remove('active'));
             btn.classList.add('active');
 
             const cards = document.querySelectorAll('#clothesGrid .listing-card');
             cards.forEach(card => {
+                // Clear any pending hide timer
+                if (card.dataset.timeoutId) {
+                    clearTimeout(Number(card.dataset.timeoutId));
+                }
+
                 if (type === 'all' || card.dataset.type === type) {
                     card.style.display = 'block';
-                    setTimeout(() => card.style.opacity = '1', 10);
+                    requestAnimationFrame(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    });
                 } else {
                     card.style.opacity = '0';
-                    setTimeout(() => card.style.display = 'none', 300);
+                    card.style.transform = 'translateY(20px) scale(0.95)';
+                    
+                    const timeoutId = setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                    card.dataset.timeoutId = timeoutId;
                 }
             });
-        }
+        }}
 
         // ============================================
         // CATEGORY SCROLL
